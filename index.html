@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TDS Hardcore Duo Guide</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0f0f0f;
+      color: #ffffff;
+      margin: 0;
+      padding: 20px;
+    }
+    h1, h2, h3 {
+      text-align: center;
+    }
+    .section {
+      margin-bottom: 40px;
+    }
+    .team {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .member {
+      text-align: center;
+      max-width: 200px;
+    }
+    .member img {
+      width: 150px;
+      height: 150px;
+      object-fit: contain;
+      border-radius: 12px;
+      background-color: #222;
+    }
+    .loadouts {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .loadout-player {
+      width: 45%;
+      min-width: 300px;
+    }
+    .tower-row {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .tower {
+      text-align: center;
+    }
+    .tower img {
+      width: 64px;
+      height: 64px;
+      background-color: #222;
+      border-radius: 6px;
+    }
+    .guide-switch {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .guide-section {
+      display: none;
+    }
+    .guide-section.active {
+      display: block;
+    }
+    .guide-line {
+      margin: 6px auto;
+      padding: 8px;
+      width: fit-content;
+      max-width: 90%;
+      background-color: #1a1a1a;
+      border: 1px solid #444;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .guide-line:hover {
+      background-color: #333;
+    }
+    .illustration {
+      text-align: center;
+      margin-top: 20px;
+    }
+    button {
+      padding: 8px 16px;
+      font-size: 14px;
+      margin: 0 10px;
+      cursor: pointer;
+      background-color: #4c00ff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+    }
+    button:hover {
+      background-color: #3700b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>TDS Hardcore Duo Guide</h1>
+
+  <div class="section team">
+    <div class="member">
+      <img src="img/author.png" alt="Author">
+      <h3>Author</h3>
+      <p>(Your name/info)</p>
+    </div>
+    <div class="member">
+      <img src="img/player1.png" alt="Player 1">
+      <h3>Player 1</h3>
+      <p>(Name/info)</p>
+    </div>
+    <div class="member">
+      <img src="img/player2.png" alt="Player 2">
+      <h3>Player 2</h3>
+      <p>(Name/info)</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Loadouts</h2>
+    <div class="loadouts">
+      <div class="loadout-player">
+        <h3>Player 1</h3>
+        <!-- 5 rows -->
+        <div class="tower-row">
+          <div class="tower"><img src="img/tower1.png"><div>Tower 1</div></div>
+          <div class="tower"><img src="img/tower2.png"><div>Tower 2</div></div>
+          <div class="tower"><img src="img/tower3.png"><div>Tower 3</div></div>
+          <div class="tower"><img src="img/tower4.png"><div>Tower 4</div></div>
+          <div class="tower"><img src="img/tower5.png"><div>Tower 5</div></div>
+        </div>
+        <!-- Add more rows as needed -->
+      </div>
+      <div class="loadout-player">
+        <h3>Player 2</h3>
+        <div class="tower-row">
+          <div class="tower"><img src="img/tower1.png"><div>Tower 1</div></div>
+          <div class="tower"><img src="img/tower2.png"><div>Tower 2</div></div>
+          <div class="tower"><img src="img/tower3.png"><div>Tower 3</div></div>
+          <div class="tower"><img src="img/tower4.png"><div>Tower 4</div></div>
+          <div class="tower"><img src="img/tower5.png"><div>Tower 5</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Guide</h2>
+    <div class="guide-switch">
+      <button onclick="switchGuide('p1')">Player 1</button>
+      <button onclick="switchGuide('p2')">Player 2</button>
+    </div>
+    
+    <div id="guide-p1" class="guide-section active">
+      <h3>Guide for Player 1</h3>
+      <div class="guide-line" onclick="copyText(this)">Place farm at wave 1</div>
+      <div class="guide-line" onclick="copyText(this)">Upgrade farm at wave 3</div>
+      <!-- More lines -->
+      <div class="illustration">
+        <p>Map Placement (Add Image Here)</p>
+        <img src="img/map_player1.png" alt="Map Guide" width="400">
+      </div>
+    </div>
+
+    <div id="guide-p2" class="guide-section">
+      <h3>Guide for Player 2</h3>
+      <div class="guide-line" onclick="copyText(this)">Place DJ at wave 1</div>
+      <div class="guide-line" onclick="copyText(this)">Upgrade Commander at wave 5</div>
+      <!-- More lines -->
+      <div class="illustration">
+        <p>Map Placement (Add Image Here)</p>
+        <img src="img/map_player2.png" alt="Map Guide" width="400">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function switchGuide(player) {
+      document.getElementById('guide-p1').classList.remove('active');
+      document.getElementById('guide-p2').classList.remove('active');
+      document.getElementById('guide-' + player).classList.add('active');
+    }
+
+    function copyText(elem) {
+      navigator.clipboard.writeText(elem.innerText);
+      elem.style.backgroundColor = '#555';
+      setTimeout(() => { elem.style.backgroundColor = '#1a1a1a'; }, 600);
+    }
+  </script>
+</body>
+</html>
