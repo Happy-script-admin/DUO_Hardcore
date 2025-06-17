@@ -9,9 +9,18 @@
       margin: 0;
       font-family: Arial, sans-serif;
       color: #ffffff;
-      background: #0e0b16;
+      background: linear-gradient(-45deg, #0e0b16, #290032);
+      background-size: 400% 400%;
+      animation: gradientWave 15s ease infinite;
       overflow-x: hidden;
     }
+
+    @keyframes gradientWave {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
     canvas#stars {
       position: fixed;
       top: 0;
@@ -19,7 +28,9 @@
       width: 100%;
       height: 100%;
       z-index: -1;
+      pointer-events: none;
     }
+
     .container {
       padding: 20px;
       max-width: 1200px;
@@ -123,7 +134,7 @@
   <div class="loadouts">
     <div class="player">
       <h3>Player 1</h3>
-      <div class="tower-row"> <!-- Repeat 5 times -->
+      <div class="tower-row">
         <div class="tower"><img src="tower1.png" alt="Tower"><p>Name</p></div>
         <div class="tower"><img src="tower2.png" alt="Tower"><p>Name</p></div>
         <div class="tower"><img src="tower3.png" alt="Tower"><p>Name</p></div>
@@ -133,7 +144,7 @@
     </div>
     <div class="player">
       <h3>Player 2</h3>
-      <div class="tower-row"> <!-- Repeat 5 times -->
+      <div class="tower-row">
         <div class="tower"><img src="tower1.png" alt="Tower"><p>Name</p></div>
         <div class="tower"><img src="tower2.png" alt="Tower"><p>Name</p></div>
         <div class="tower"><img src="tower3.png" alt="Tower"><p>Name</p></div>
@@ -149,15 +160,12 @@
     <button class="guide-button" onclick="showGuide('p2')">Player 2</button>
 
     <div id="p1-guide" class="guide-lines">
-      <!-- Repeat for each step -->
       <div class="guide-line" onclick="copyText(this)">Place Farm at wave 1</div>
-      <!-- More lines here -->
       <div class="map-img"><img src="map-player1.png" alt="Map" width="80%"></div>
     </div>
 
     <div id="p2-guide" class="guide-lines" style="display: none">
       <div class="guide-line" onclick="copyText(this)">Place Scout at wave 1</div>
-      <!-- More lines here -->
       <div class="map-img"><img src="map-player2.png" alt="Map" width="80%"></div>
     </div>
   </div>
@@ -175,7 +183,6 @@ function copyText(element) {
   });
 }
 
-// Particle star background
 const canvas = document.getElementById('stars');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
